@@ -42,3 +42,15 @@ build/
 mvnw.cmd
 mvnw
 .mvn
+
+### Current project
+*.pdf
+*.aux
+*.log
+*.toc
+*.out
+
+temp/
+__pycache__/
+venv/
+output/
