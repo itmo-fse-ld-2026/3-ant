@@ -53,4 +53,4 @@ mvnw
 temp/
 __pycache__/
 venv/
-output/
+postgresql_db_data/
