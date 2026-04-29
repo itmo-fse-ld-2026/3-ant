@@ -1,6 +1,6 @@
 # =============================================================================
-# Python Environment for VCS Mapping and Automation
-# Base: python:3.11-slim (Debian-based)
+# WildFly with PostgreSQL JDBC Driver for Web Application
+# Base: quay.io/wildfly/wildfly:28.0.0.Final-jdk20
 # =============================================================================
 
 FROM quay.io/wildfly/wildfly:28.0.0.Final-jdk20

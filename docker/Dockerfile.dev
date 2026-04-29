@@ -1,6 +1,7 @@
 # =============================================================================
-# Python Environment for VCS Mapping and Automation
+# Python Environment for Web Programming - Lab #3 (Apache Ant)
 # Base: python:3.11-slim (Debian-based)
+# Purpose: Execution and automation of Ant build scripts and SVN integration
 # =============================================================================
 
 FROM python:3.11-slim
