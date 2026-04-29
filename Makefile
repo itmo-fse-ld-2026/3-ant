@@ -4,7 +4,7 @@ report_name=main
 build:
 	python src/main/python/main.py
 	mvn package
-	sudo -E docker compose up
+	docker compose up
 clean:
 	# clean LaTeX artifacts
 	@for file_ext in "*.pdf" "*.aux" "*.log" "*.toc" "*.out"; do \
