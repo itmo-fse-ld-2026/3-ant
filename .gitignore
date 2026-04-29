@@ -54,3 +54,4 @@ temp/
 __pycache__/
 venv/
 postgresql_db_data/
+*.compiled.*

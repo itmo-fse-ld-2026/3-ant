@@ -1,34 +1,36 @@
 services:
   database:
     image: "postgres:18.0-alpine3.22"
+    user: "${UID}:${GID}"
     container_name: ${POSTGRES_HOST}
+    command: postgres -c 'config_file=/etc/postgresql/postgresql.conf'
     environment:
-      - POSTGRES_HOST
-      - POSTGRES_DB
       - POSTGRES_USER
       - POSTGRES_PASSWORD
+      - POSTGRES_PORT
     volumes:
-      # - ./app/src/main/resources/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./postgresql_db_data:/var/lib/postgresql/18/data
+      - ./src/main/resources/postgres/postgres.compiled.conf:/etc/postgresql/postgresql.conf
     networks:
       - backend
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -p $${POSTGRES_PORT}"]
       interval: 5s
       timeout: 5s
       retries: 5
   wildfly:
-    image: quay.io/wildfly/wildfly:28.0.0.Final-jdk20
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.web
     environment:
       - POSTGRES_HOST
       - POSTGRES_DB
+      - POSTGRES_PORT
       - POSTGRES_USER
       - POSTGRES_PASSWORD
     volumes:
-      # - ./app/src/main/resources/wildfly/standalone.xml:/opt/jboss/wildfly/standalone/configuration/standalone.xml
+      - ./src/main/resources/wildfly/standalone.compiled.xml:/opt/jboss/wildfly/standalone/configuration/standalone.xml
       - ./target:/opt/jboss/wildfly/standalone/deployments/
-      # - ./public/app/src/main/typescript:/opt/jboss/wildfly/resources/app
-      # - ./public/jsf-component/src/main/resources/META-INF/resources/itmo:/opt/jboss/wildfly/resources/itmo
     networks:
       - backend
     ports:
