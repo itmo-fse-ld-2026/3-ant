@@ -19,5 +19,6 @@ RUN \
     babel-russian \
     hyphen-russian \
     hyperref \
-    titlesec && \
+    titlesec \
+    etoolbox && \
   apt-get clean
