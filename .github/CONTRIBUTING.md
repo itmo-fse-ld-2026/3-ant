@@ -18,7 +18,7 @@ docker run --rm -v .:/data ghcr.io/itmo-fse-ld-2026/3-xetex-compiler:dev make pd
 Используйте следующую команду для запуска сборки проекта внутри контейнера:
 
 ```bash
-docker run --rm -v .:/project ghcr.io/itmo-fse-ld-2026/3-ant-environment:dev ant build
+docker run --rm -v .:/project --device /dev/snd ghcr.io/itmo-fse-ld-2026/3-ant-environment:dev ant build
 ```
 
 **Примечание:** При запуске через Docker текущая директория монтируется в `/project` (`/data`), что позволяет сохранять результат компиляции на вашей локальной машине.
