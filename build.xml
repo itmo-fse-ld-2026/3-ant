@@ -1,0 +1,15 @@
+<project>
+  <property file="src/main/resources/build.properties"/>
+
+  <target name="build">
+    <echo message="Building..."/>
+  </target>
+
+  <target name="music" depends="build">
+    <sound>
+      <success source="${ant.home}/sounds/build_success.mp3"/>
+      <fail source="${ant.home}/sounds/build_fail.mp3"/>
+    </sound>
+  </target>
+
+</project>
