@@ -18,7 +18,7 @@ services:
       timeout: 5s
       retries: 5
   wildfly:
-    image: ghcr.io/itmo-fse-ld-2026/3-web-environment:dev
+    image: ghcr.io/itmo-fse-ld-2026/3-web-environment:${VERSION_TAG}
     environment:
       - POSTGRES_HOST
       - POSTGRES_DB

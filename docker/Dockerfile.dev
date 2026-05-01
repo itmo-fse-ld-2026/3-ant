@@ -17,7 +17,7 @@ RUN apt-get update && \
 
 WORKDIR /project
 
-COPY requirements.txt .
+COPY src/main/resources/python/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # for ant's "music" goal
