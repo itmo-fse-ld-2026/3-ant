@@ -18,9 +18,7 @@ services:
       timeout: 5s
       retries: 5
   wildfly:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile.web
+    image: ghcr.io/itmo-fse-ld-2026/3-web-environment:dev
     environment:
       - POSTGRES_HOST
       - POSTGRES_DB

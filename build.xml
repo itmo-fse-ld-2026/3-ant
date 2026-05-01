@@ -1,14 +1,17 @@
-<project>
-  <property file="src/main/resources/build.properties"/>
+<project xmlns:ivy="antlib:org.apache.ivy.ant">
+  <property file="src/main/resources/ant/build.properties"/>
 
-  <target name="build">
-    <echo message="Building..."/>
+  <target name="compile">
+    <echo message="[WIP] Compiling..."/>
+  </target>
+
+  <target name="build" depends="compile">
+    <echo message="[WIP] Building..."/>
   </target>
 
   <target name="music" depends="build">
     <sound>
-      <success source="${ant.home}/sounds/build_success.mp3"/>
-      <fail source="${ant.home}/sounds/build_fail.mp3"/>
+      <success source="${fse.ant.home}/sounds/build_success.wav"/>
     </sound>
   </target>
 
