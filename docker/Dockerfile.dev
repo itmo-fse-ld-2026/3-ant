@@ -1,25 +1,28 @@
 # =============================================================================
-# Python Environment for VCS Mapping and Automation
+# Python Environment for FSE Lab #3 (Apache Ant)
 # Base: python:3.11-slim (Debian-based)
+# Purpose: Execution and automation of Ant build scripts and SVN integration
 # =============================================================================
 
 FROM python:3.11-slim
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
-  git \
   subversion \
-  rsync \
-  unzip \
-  curl \
-  tree \
-  libsvn-perl \
-  graphviz \
-  make && \
+  make \
+  ant \
+  ant-optional && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
 WORKDIR /project
 
-COPY requirements.txt .
+COPY src/main/resources/python/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+
+# for ant's "music" goal
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends \
+  libasound2 && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
